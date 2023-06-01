@@ -242,7 +242,7 @@ const DesktopConvert: React.FC<{
 
     return (
         <div
-            className="tw-absolute tw-left-0 tw-w-full tw-h-full  tw-flex tw-justify-center tw-items-center tw-top-0 tw-z-10 "
+            className="tw-absolute tw-left-0  tw-w-full tw-h-full  tw-flex tw-justify-center tw-items-center tw-top-0 tw-z-10 "
             aria-labelledby="modal-title"
             role="dialog"
             aria-modal="true"
@@ -253,7 +253,7 @@ const DesktopConvert: React.FC<{
                         className="tw-relative tw-transform  tw-overflow-hidden tw-bg-white tw-text-left tw-shadow-xl tw-transition-all sm:tw-my-8 sm:tw-w-full lg:min-tw-w-0  lg:tw-w-[1000px]  lg:tw-h-[418px]"
                         style={{ borderRadius: 20 }}
                     >
-                        <div className="tw-flex lg:tw-relative tw-h-full lg:tw-w-[1000px]">
+                        <div className="tw-flex lg:tw-relative tw-h-full tw-absolute tw-left-0 tw-w-full tw-h-full  tw-flex tw-justify-center tw-items-center tw-top-0 tw-z-10 ">
                             <div className=" tw-bg-[#F5F5F5]  tw-flex tw-flex-col tw-w-full lg:tw-w-[312px]">
                                 {!noReturn && (
                                     <button
@@ -329,7 +329,7 @@ const DesktopConvert: React.FC<{
                                 </div>
                                 <div className="tw-mt-[44px]"></div>
                             </div>
-                            <div className=" tw-px-[48px] tw-pt-[39px]  tw-h-full lg:tw-w-[687px] tw-flex tw-flex-col ">
+                            <div className=" tw-px-[48px] lg:tw-px-[28px] xl:tw-px-[48px] tw-pt-[39px]  tw-h-full lg:tw-w-[687px] tw-flex tw-flex-col  ">
                                 <div
                                     className={`tw-flex tw-items-start  ${
                                         collectingDetails ? "tw-mb-[56px]" : "tw-mb-[17px]"
@@ -383,11 +383,10 @@ const ConversionForm: React.FC<{
     return (
         <>
             <p
-                className=""
+                 className={`${forMobile ? "tw-mb-[17px]" : "xl:tw-mr[39px] lg:tw-mb-[13.25px] xl:tw-mb-[53.25px] "}`}
                 style={{
                     lineHeight: forMobile ? "26px" : "30px",
                     fontSize: forMobile ? "16px" : "16px",
-                    margin: forMobile ? "0 0 17px" : "0 39px 53.25px  0",
                 }}
             >
                 To fully experience the Spiff workflow, please provide your email and mobile number. We will save and

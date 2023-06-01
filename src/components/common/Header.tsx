@@ -95,7 +95,7 @@ const MobileHeader: React.FunctionComponent<{
                         <a
                             key={s.getId()}
                             onClick={() => onChangeTab(s)}
-                            className={`tw-h-full tw-px-[16px] ssm:tw-px-[8px] ${
+                            className={`tw-h-full tw-px-[16px] ssm:tw-px-[8px] sssm:tw-px-[3px] ${
                                 s.getId() === currentStep.getId() ? "" : "tw-opacity-50"
                             } tw-cursor-pointer tw-flex tw-items-center  hover:tw-text-white hover:tw-opacity-80  tw-justify-center `}
                             style={{
@@ -108,7 +108,7 @@ const MobileHeader: React.FunctionComponent<{
                             }}
                         >
                             {getIconForStepType(s.getType(), false, "icons")}
-                            <span className="tw-px-2  hover:tw-text-white hover:tw-opacity-80   tw-text-[15px] tw-font-semibold tw-leading-[18px]">
+                            <span className="tw-px-2 ssm:tw-px-[4px] hover:tw-text-white hover:tw-opacity-80   tw-text-[15px] tw-font-semibold tw-leading-[18px]">
                                 {s.getName()}
                             </span>
                         </a>

@@ -66,24 +66,31 @@ const MobileFooter: React.FunctionComponent<{
 
     const icon = currentStep ? getIconForStepType(currentStep.getType(), true, "regular") : null;
     return (
-        <div className="tw-bg-[#FFF] tw-h-[93px]  tw-w-full tw-flex tw-relative  tw-bottom-0 tw-justify-between">
+        <div className="tw-bg-[#FFF] tw-h-[93px]   tw-w-full tw-flex tw-relative  tw-bottom-0 tw-justify-between">
             <div
                 className={`tw-flex tw-items-center   ${
                     currentStep?.getType() === StepType.Text
-                        ? "tw-px-[13px]"
-                        : ` ${currentStep?.getType() === StepType.Picture ? "tw-px-[22px]" : "tw-px-[20px]"}`
+                        ? "tw-px-[13px] sssm:tw-px-[5px]"
+                        : ` ${
+                              currentStep?.getType() === StepType.Picture
+                                  ? "tw-px-[22px] sssm:tw-px-[12px]"
+                                  : "tw-px-[20px] sssm:tw-px-[10px] "
+                          }`
                 }`}
             >
                 <div className="">{icon}</div>
                 <h1
                     className={` ${
-                        currentStep?.getType() === StepType.Text ? "tw-ml-[10px]" : "tw-ml-[18px]"
+                        currentStep?.getType() === StepType.Text ? "tw-ml-[10px] sssm:tw-px-[5px]" : "tw-ml-[18px] sssm:tw-px-[8px]"
                     } tw-leading-[19.36px] tw-text-[16px] tw-font-[600]`}
                 >
                     {currentStep?.getName()}
                 </h1>
             </div>
-            <div className="tw-flex tw-justify-center" style={{ flexDirection: "column", padding: "0 14px" }}>
+            <div
+                className="tw-flex tw-justify-center tw-px-[14px] sssm:tw-px-[7px]"
+                style={{ flexDirection: "column" }}
+            >
                 <button
                     style={{ fontWeight: 500, WebkitTapHighlightColor: "transparent" }}
                     className="tw-bg-[#F23064] tw-text-white tw-text-[14px] tw-px-2 tw-py-2 tw-leading-[20px] tw-rounded-md tw-w-[147px] tw-h-[36px]"
