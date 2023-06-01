@@ -57,6 +57,7 @@ const App: React.FunctionComponent<{
 
     const handleTabChange = useCallback(
         (newStep: StepHandle<AnyStepData>) => {
+            setShowConversionUI(false);
             setTabIndex(steps.findIndex((s) => s.getId() === newStep.getId()));
             newStep.executeAnimations();
         },
@@ -96,51 +97,61 @@ const App: React.FunctionComponent<{
     const hasSteps = steps.length > 0 && !!currentStep;
 
     return (
-        <div className="App">
-            {hasSteps && (
-                <Header
-                    conversionScreenActive={showConversionUI}
-                    steps={steps}
-                    currentStep={currentStep}
-                    onChangeTab={handleTabChange}
-                />
-            )}
-            <div className="tw-flex tw-flex-1 tw-justify-center tw-relative">
-                {hasSteps && !showConversionUI && <Step step={currentStep} />}
-                <canvas
-                    key="canvas"
-                    ref={canvasRef}
-                    className="tw-outline-none"
-                    style={{
-                        maxWidth: "100%",
-                        height: "100%",
-                        display: !showConversionUI ? "block" : "hidden",
-                    }}
-                />
-                {!hasSteps && (
-                    <div className="tw-absolute tw-w-full tw-h-full tw-flex tw-items-center tw-justify-center tw-pointer-events-none">
-                        <Spinner />
-                    </div>
+        <div className="App ">
+            <div
+                style={{
+                    touchAction: "none",
+                }}
+                className="tw-w-full tw-h-full tw-relative tw-flex tw-flex-col "
+            >
+                {hasSteps && (
+                    <Header
+                        headerHashtag={showConversionUI}
+                        setHeaderHashtag={setShowConversionUI}
+                        conversionScreenActive={showConversionUI}
+                        steps={steps}
+                        currentStep={currentStep}
+                        onChangeTab={handleTabChange}
+                    />
                 )}
-                {hasSteps && !showConversionUI && <PreviewHint />}
-            </div>
-            {hasSteps && showConversionUI && (
-                <Convert
-                    workflowExperience={workflowExperience}
-                    onConvert={(email, mobile) =>
-                        workflowExperience.assignCustomerDetails({ emailAddress: email, phoneNumber: mobile })
-                    }
-                    onHideConvert={() => setShowConversionUI(false)}
-                    onMeeting={onMeeting}
-                    onLearnMore={onLearnMore}
-                    onWatchUs={onWatchUs}
+                <div className="tw-flex tw-flex-1 tw-justify-center content  tw-w-full    tw-relative ">
+                    {hasSteps && !showConversionUI && <Step step={currentStep} />}
+
+                    <canvas
+                        key="canvas"
+                        ref={canvasRef}
+                        className={`tw-outline-none ${showConversionUI ? "tw-hidden" : "tw-block"}`}
+                        style={{
+                            maxWidth: "100%",
+                            height: "100%",
+                            display: !showConversionUI ? "block" : "hidden",
+                        }}
+                    />
+                    {hasSteps && !showConversionUI && <PreviewHint />}
+                    {!hasSteps && (
+                        <div className="tw-absolute tw-w-full tw-h-full tw-pt-[10.4%] tw-flex tw-items-center tw-justify-center tw-pointer-events-none">
+                            <Spinner />
+                        </div>
+                    )}
+                </div>
+                {hasSteps && showConversionUI && (
+                    <Convert
+                        workflowExperience={workflowExperience}
+                        onConvert={(email, mobile) =>
+                            workflowExperience.assignCustomerDetails({ emailAddress: email, phoneNumber: mobile })
+                        }
+                        onHideConvert={() => setShowConversionUI(false)}
+                        onMeeting={onMeeting}
+                        onLearnMore={onLearnMore}
+                        onWatchUs={onWatchUs}
+                    />
+                )}
+                <Footer
+                    currentStep={currentStep}
+                    onSave={() => setShowConversionUI(true)}
+                    shouldShow={hasSteps && !showConversionUI}
                 />
-            )}
-            <Footer
-                currentStep={currentStep}
-                onSave={() => setShowConversionUI(true)}
-                shouldShow={hasSteps && !showConversionUI}
-            />
+            </div>
         </div>
     );
 };

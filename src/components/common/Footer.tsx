@@ -1,4 +1,5 @@
 import React from "react";
+import { StepType } from "@spiffcommerce/core";
 import { AnyStepData, StepHandle } from "@spiffcommerce/core";
 import { getIconForStepType } from "../../shared";
 
@@ -6,19 +7,21 @@ const DesktopFooter: React.FunctionComponent<{
     currentStep?: StepHandle<AnyStepData>;
     onSave: () => void;
 }> = ({ currentStep, onSave }) => {
-    const icon = currentStep ? getIconForStepType(currentStep.getType(), true, "large") : null;
+    const icon = currentStep ? getIconForStepType(currentStep.getType(), true, "regular") : null;
     return (
-        <div className="tw-w-full tw-shadow-2xl">
+        <div className="tw-w-full tw-relative tw-min-h-[140px] tw-h-full tw-shadow-2xl">
             <div
-                className="tw-flex tw-bg-[#FFFFFF] lg:tw-mr-10 tw-gap-2 lg:tw-mb-5 2xl:tw-mb-10 tw-p-[24px] tw-justify-between"
+                className="tw-flex  tw-w-[calc(100%_-_26px)] xl:tw-bottom-[46px]  tw-absolute tw-left-0 tw-bottom-[20px] tw-bg-[#FFFFFF] lg:tw-mr-10 tw-gap-2  tw-p-[24px] tw-justify-between"
                 style={{ borderRadius: "0px 0px 20px 0px" }}
             >
                 <div className="tw-flex tw-items-center">
-                    <div className="tw-flex tw-items-center tw-border-r tw-px-5 tw-min-w-[380px] tw-max-w-[400px] ">
-                        {icon}
+                    <div className="tw-flex tw-items-center tw-border-r tw-px-5 tw-min-w-[s380px] tw-max-w-[400px] ">
+                        <p className="tw-leading-[55px] tw-h-[55px] tw-flex tw-justify-center tw-items-center">
+                            {icon}
+                        </p>
                         <h1
                             style={{ all: "unset" }}
-                            className="tw-ml-[18px] tw-text-[18px] tw-text-black tw-font-[600]"
+                            className="tw-ml-[18px] xl:tw-max-w-[350px] xl:tw-w-[270px] lg:tw-ml-[10px]  tw-leading-[22px] tw-text-[18px] tw-text-black tw-font-[600]"
                         >
                             {currentStep?.getName()}
                         </h1>
@@ -34,7 +37,7 @@ const DesktopFooter: React.FunctionComponent<{
                             all: "unset",
                             WebkitLineClamp: 2,
                         }}
-                        className="tw-text-[14px] tw-text-black tw-pl-5"
+                        className="tw-text-[14px] tw-text-black tw-pl-[22px] tw-leading-[24px]"
                     >
                         {currentStep?.getHelpText()}
                     </div>
@@ -43,10 +46,10 @@ const DesktopFooter: React.FunctionComponent<{
                     <div className="tw-ml-5 tw-flex tw-items-center tw-mr-2">
                         <button
                             style={{ fontWeight: 600 }}
-                            className="tw-bg-[#F23064] tw-text-white tw-text-[14px] tw-px-2 tw-py-2 tw-rounded-md tw-w-[147px] tw-h-[36px]"
+                            className="tw-bg-[#F23064] tw-leading-[20px] tw-font-medium tw-text-white tw-text-[14px] tw-px-2 tw-py-2 tw-rounded-md tw-w-[147px] tw-h-[36px]"
                             onClick={onSave}
                         >
-                            Save Your Product
+                            Save your product
                         </button>
                     </div>
                 </div>
@@ -59,20 +62,34 @@ const MobileFooter: React.FunctionComponent<{
     currentStep?: StepHandle<AnyStepData>;
     onSave: () => void;
 }> = ({ currentStep, onSave }) => {
+    // console.log(currentStep.getType());
+
     const icon = currentStep ? getIconForStepType(currentStep.getType(), true, "regular") : null;
     return (
-        <div className="tw-bg-[#FFF] tw-h-[93px] tw-flex tw-justify-between">
-            <div className="tw-flex tw-items-center tw-px-5">
-                {icon}
-                <h1 className="tw-ml-[18px] tw-text-[16px] tw-font-[600]">{currentStep?.getName()}</h1>
+        <div className="tw-bg-[#FFF] tw-h-[93px]  tw-w-full tw-flex tw-relative  tw-bottom-0 tw-justify-between">
+            <div
+                className={`tw-flex tw-items-center   ${
+                    currentStep?.getType() === StepType.Text
+                        ? "tw-px-[13px]"
+                        : ` ${currentStep?.getType() === StepType.Picture ? "tw-px-[22px]" : "tw-px-[20px]"}`
+                }`}
+            >
+                <div className="">{icon}</div>
+                <h1
+                    className={` ${
+                        currentStep?.getType() === StepType.Text ? "tw-ml-[10px]" : "tw-ml-[18px]"
+                    } tw-leading-[19.36px] tw-text-[16px] tw-font-[600]`}
+                >
+                    {currentStep?.getName()}
+                </h1>
             </div>
             <div className="tw-flex tw-justify-center" style={{ flexDirection: "column", padding: "0 14px" }}>
                 <button
-                    style={{ fontWeight: 600 }}
-                    className="tw-bg-[#F23064] tw-text-white tw-text-[14px] tw-px-2 tw-py-2 tw-rounded-md tw-w-[147px] tw-h-[36px]"
+                    style={{ fontWeight: 500, WebkitTapHighlightColor: "transparent" }}
+                    className="tw-bg-[#F23064] tw-text-white tw-text-[14px] tw-px-2 tw-py-2 tw-leading-[20px] tw-rounded-md tw-w-[147px] tw-h-[36px]"
                     onClick={onSave}
                 >
-                    Save Your Product
+                    Save your product
                 </button>
             </div>
         </div>

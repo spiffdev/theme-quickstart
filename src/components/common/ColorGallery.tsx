@@ -12,12 +12,12 @@ export const ColorGallery: React.FC<{
 
     return (
         <div
+            className=" tw-max-h-[30px]  "
             style={{
-                display: "grid",
+                display: "flex",
                 gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
-                maxHeight: 300,
-                columnGap: 20,
-                rowGap: 20,
+                columnGap: 14,
+                rowGap: 14,
                 scrollBehavior: "smooth",
             }}
         >
@@ -44,6 +44,7 @@ const ColorGalleryItem: React.FC<{
 
     return (
         <div
+            className="lg:tw-w-[30px] tw-w-[30px] lg:tw-outline-offset-2 tw-outline-offset-0 "
             onMouseEnter={() => setOver(true)}
             onMouseLeave={() => setOver(false)}
             onClick={onClick}
@@ -53,10 +54,8 @@ const ColorGalleryItem: React.FC<{
                 borderRadius: "50%",
                 boxShadow: `0px 0px 16px rgba(0, 0, 0, 0.16)`,
                 cursor: "pointer",
-                outline: selected || over ? `2px solid #F23064` : undefined,
-                outlineOffset: "2px",
+                outline: selected || over ? `1px solid #FFFFFF` : undefined,
                 position: "relative",
-                width: "100%",
             }}
         />
     );

@@ -43,125 +43,160 @@ const MobileConvert: React.FC<{
 
     return (
         <div
+            className=" tw-w-full  tw-h-full"
             style={{
-                backgroundColor: "#fff",
-                borderRadius: 20,
-                position: "fixed",
-                top: 20,
+                overflow: "hidden",
+                top: 0,
                 bottom: 20,
-                left: 15,
-                right: 15,
+                left: 0,
+                position: "absolute",
+                paddingBottom: 40,
             }}
         >
-            <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column" }}>
-                <button onClick={onHideConvert} style={{ position: "fixed", top: 25, right: 25 }}>
-                    <Close />
-                </button>
-                <div
-                    style={{
-                        flex: "1 0 40%",
-                        backgroundColor: "#f5f5f5",
-                        borderRadius: "20px 20px 0 0",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    {!screenshot && (
-                        <div className="tw-h-full tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center">
-                            <Spinner />
-                            <p>Preview Loading...</p>
-                        </div>
-                    )}
-                    {screenshot && (
-                        <div
-                            className="tw-flex tw-flex-col tw-w-[312px] tw-h-[50%] tw-rounded-md grow"
-                            style={{
-                                backgroundImage: `url(${screenshot})`,
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                                backgroundRepeat: "no-repeat",
-                                margin: "18px auto",
-                                flex: "1 0 50%",
-                            }}
-                        ></div>
-                    )}
-                    <div style={{ flex: "0 1 50%", overflowY: "scroll", marginLeft: "18px" }}>
-                        {Array.from(exportedData).map(([dataKey, value]) => {
-                            if (!value) {
-                                return undefined;
-                            }
-                            return (
-                                <div className="tw-w-full" key={dataKey}>
-                                    <table className="tw-table-fixed tw-w-full tw-text-sm">
-                                        <col width={"30%"} />
-                                        <tbody>
-                                            <tr>
-                                                <td colSpan={2}>
-                                                    <h2 className="tw-text-lg tw-font-bold tw-text-ellipsis tw-overflow-hidden tw-whitespace-nowrap">
-                                                        {dataKey}
-                                                    </h2>
-                                                </td>
-                                            </tr>
-                                            {Object.keys(value).map((valueKey, index) => {
-                                                return (
-                                                    <tr key={index}>
-                                                        <td className="tw-font-bold tw-capitalize">{valueKey}:</td>
-                                                        <td className="tw-text-ellipsis tw-overflow-hidden tw-whitespace-nowrap">
-                                                            {value[valueKey]}
+            <div
+                style={{
+                    borderRadius: 20,
+                }}
+                className="tw-my-[20px] tw-bg-white   tw-relative tw-flex tw-justify-center  tw-items-center  tw-mx-[20px] tw-overflow-auto tw-h-full tw-scrollbar-none  "
+            >
+                <div className="" style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column" }}>
+                    <button
+                        className="tw-absolute tw-right-[20.5px] tw-top-[24.18px]"
+                        onClick={onHideConvert}
+                        style={{ position: "fixed", top: 25, right: 25 }}
+                    >
+                        <Close />
+                    </button>
+                    <div
+                        style={{
+                            backgroundColor: "#F5F5F5",
+                            borderRadius: "20px 20px 0 0",
+                            // display: "flex",
+                            // flexDirection: "column",
+                            padding: "36px 37px 10px 33px",
+                        }}
+                    >
+                        {!screenshot && (
+                            <div className="tw-h-full tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center">
+                                <Spinner />
+                                <p>Preview Loading...</p>
+                            </div>
+                        )}
+                        {screenshot && (
+                            <div
+                                className="tw-flex tw-flex-col  tw-rounded-md grow"
+                                style={{
+                                    backgroundImage: `url(${screenshot})`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundRepeat: "no-repeat",
+                                    // margin: "18px auto",
+                                    // flex: "1 0 50%",
+                                    height: "105px",
+                                }}
+                            ></div>
+                        )}
+                        {screenshot && (
+                            <div style={{ marginTop: "10px" }}>
+                                {Array.from(exportedData).map(([dataKey, value]) => {
+                                    if (!value) {
+                                        return undefined;
+                                    }
+                                    return (
+                                        <div className="tw-w-full" key={dataKey}>
+                                            <table className="tw-table-fixed tw-border-none tw-p-[0px] tw-m-[0px] tw-w-full tw-text-sm">
+                                                <col className="tw-border-none tw-p-[0px] tw-m-[0px] " width={"30%"} />
+                                                <tbody className="tw-border-none tw-p-[0px] tw-m-[0px] ">
+                                                    <tr className="tw-border-none tw-p-[0px] tw-m-[0px] ">
+                                                        <td
+                                                            className="tw-border-none tw-p-[0px] tw-m-[0px] "
+                                                            colSpan={2}
+                                                        >
+                                                            <h2 className="tw-text-lg  tw-mb-0 tw-font-bold tw-text-ellipsis tw-overflow-hidden tw-whitespace-nowrap">
+                                                                {dataKey}
+                                                            </h2>
                                                         </td>
                                                     </tr>
-                                                );
-                                            })}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            );
-                        })}
+                                                    {Object.keys(value).map((valueKey, index) => {
+                                                        return (
+                                                            <tr
+                                                                className="tw-border-none tw-p-[0px] tw-m-[0px] "
+                                                                key={index}
+                                                            >
+                                                                <td className="tw-border-none tw-p-[0px] tw-m-[0px] tw-text-[14px] tw-leading-[19px]  tw-font-bold tw-capitalize tw-px-0 tw-py-0 ">
+                                                                    {valueKey}:
+                                                                </td>
+                                                                <td className="tw-text-ellipsis tw-border-none tw-text-[#000000] tw-text-[14px]  tw-font-normal tw-p-[0px] tw-m-[0px]  tw-leading-[19px] tw-overflow-hidden tw-whitespace-nowrap">
+                                                                    {value[valueKey]}
+                                                                </td>
+                                                            </tr>
+                                                        );
+                                                    })}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        )}
                     </div>
-                </div>
-                <div style={{ flex: "0 1 60%" }}>
-                    <div style={{ margin: 20 }}>
-                        {collectingDetails ? (
-                            <div
-                                style={{
-                                    display: "flex",
-                                    margin: "5px 0",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                }}
-                            >
-                                <Hash />
-                                <p style={{ fontSize: 18, fontWeight: 600 }}>What happens next?</p>
-                                <span style={{ visibility: "hidden" }}>
+                    <div style={{ flex: "0 1 60%" }}>
+                        <div style={{ marginBottom: 20, marginLeft: 33, marginTop: 39, marginRight: 37 }}>
+                            {collectingDetails ? (
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        margin: "5px 0",
+                                        // justifyContent: "space-between",
+                                        flexDirection: "column",
+                                        // alignItems: "center",
+                                    }}
+                                >
                                     <Hash />
-                                </span>
-                            </div>
-                        ) : (
-                            <div
-                                style={{
-                                    display: "flex",
-                                    margin: "17px 0",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                }}
-                            >
-                                <Tick />
-                                <p style={{ fontSize: 18, fontWeight: 600 }}>Thank you!</p>
-                                <span style={{ visibility: "hidden" }}>
+                                    <p
+                                        className="tw-leading-[22px]"
+                                        style={{
+                                            fontSize: 18,
+                                            fontWeight: 600,
+                                            marginTop: 17,
+                                            marginBottom: 12,
+                                        }}
+                                    >
+                                        What happens next?
+                                    </p>
+                                    {/* <span style={{ visibility: "hidden" }}>
+                                        <Hash />
+                                    </span> */}
+                                </div>
+                            ) : (
+                                <div
+                                    style={{
+                                        // display: "flex",
+                                        margin: "17px 0",
+                                        // justifyContent: "space-between",
+                                        // alignItems: "center",
+                                    }}
+                                >
                                     <Tick />
-                                </span>
-                            </div>
-                        )}
-                        {collectingDetails ? (
-                            <ConversionForm onConvert={handleConvert} forMobile />
-                        ) : (
-                            <ConversionFinalizedPage
-                                forMobile
-                                onMeeting={onMeeting}
-                                onLearnMore={onLearnMore}
-                                onWatchUs={onWatchUs}
-                            />
-                        )}
+                                    <p style={{ fontSize: 18, fontWeight: 600, lineHeight: "21.78px", marginTop: 17 }}>
+                                        Thank you!
+                                    </p>
+                                    {/* <span style={{ visibility: "hidden" }}>
+                                        <Tick />
+                                    </span> */}
+                                </div>
+                            )}
+                            {collectingDetails ? (
+                                <ConversionForm onConvert={handleConvert} forMobile />
+                            ) : (
+                                <ConversionFinalizedPage
+                                    forMobile
+                                    onMeeting={onMeeting}
+                                    onLearnMore={onLearnMore}
+                                    onWatchUs={onWatchUs}
+                                />
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -206,25 +241,30 @@ const DesktopConvert: React.FC<{
     const noReturn = !collectingDetails;
 
     return (
-        <div className="tw-relative tw-z-10 " aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <div className="tw-fixed tw-inset-0 tw-z-10 tw-overflow-y-auto">
-                <div className="tw-flex tw-min-h-full tw-items-end tw-justify-center tw-p-4 tw-text-center sm:tw-items-center sm:tw-p-0">
+        <div
+            className="tw-absolute tw-left-0 tw-w-full tw-h-full  tw-flex tw-justify-center tw-items-center tw-top-0 tw-z-10 "
+            aria-labelledby="modal-title"
+            role="dialog"
+            aria-modal="true"
+        >
+            <div className=" tw-inset-0 tw-z-10 tw-overflow-y-auto">
+                <div className="tw-flex tw-min-h-full tw-w-full tw-items-end tw-justify-center tw-p-4 tw-text-center sm:tw-items-center sm:tw-p-0">
                     <div
-                        className="tw-relative tw-transform tw-overflow-hidden tw-bg-white tw-text-left tw-shadow-xl tw-transition-all sm:tw-my-8 sm:tw-w-full lg:tw-w-[70vw] lg:tw-h-[60vh] lg:tw-max-w-[1000px] lg:tw-max-h-[418px]"
+                        className="tw-relative tw-transform  tw-overflow-hidden tw-bg-white tw-text-left tw-shadow-xl tw-transition-all sm:tw-my-8 sm:tw-w-full lg:min-tw-w-0  lg:tw-w-[1000px]  lg:tw-h-[418px]"
                         style={{ borderRadius: 20 }}
                     >
-                        <div className="tw-flex tw-h-full">
-                            <div className="tw-w-full tw-bg-[#F5F5F5] tw-p-5 tw-flex tw-flex-col">
+                        <div className="tw-flex lg:tw-relative tw-h-full lg:tw-w-[1000px]">
+                            <div className=" tw-bg-[#F5F5F5]  tw-flex tw-flex-col tw-w-full lg:tw-w-[312px]">
                                 {!noReturn && (
                                     <button
-                                        className="tw-p-1 tw-ml-auto tw-bg-transparent tw-border-0 tw-text-black  tw-float-right tw-text-xl tw-leading-none tw-font-semibold tw-outline-none focus:tw-outline-none tw-mt-2 tw-mr-2  tw-block lg:tw-hidden"
+                                        className="tw-p-1  tw-bg-transparent tw-border-0 tw-text-black tw-bg-black tw-float-right tw-text-xl tw-leading-none tw-font-semibold tw-outline-none focus:tw-outline-none tw-mt-2 tw-mr-2  tw-block lg:tw-hidden"
                                         onClick={onHideConvert}
                                     >
                                         X
                                     </button>
                                 )}
                                 <div
-                                    className="tw-flex tw-flex-col tw-w-[312px] tw-h-[50%] tw-rounded-md tw-grow"
+                                    className="tw-flex tw-mb-[39px] tw-flex-col lg:tw-w-[297px] lg:tw-h-[198px] tw-w-[312px] tw-h-[50%] tw-rounded-md tw-mt-[80px] tw-ml-[6px] tw-mr-[9px] tw-grow"
                                     style={
                                         screenshot
                                             ? {
@@ -243,30 +283,39 @@ const DesktopConvert: React.FC<{
                                         </div>
                                     )}
                                 </div>
-                                <div className="tw-mt-5 tw-border-spacing-2 tw-w-full tw-overflow-y-auto tw-shrink-[2] tw-flex tw-flex-col tw-gap-2">
+                                <div className=" tw-pr-[57px]  tw-pl-[47px] tw-overflow-auto  tw-scrollbar-thin tw-scrollbar-thumb-slate-500  tw-scrollbar-track-slate-200   tw-border-spacing-2 tw-w-full  tw-shrink-[2] tw-flex tw-flex-col tw-gap-2">
                                     {Array.from(exportedData).map(([dataKey, value]) => {
                                         if (!value) {
                                             return undefined;
                                         }
                                         return (
-                                            <div className="tw-w-full" key={dataKey}>
-                                                <table className="tw-table-fixed tw-w-full tw-text-sm">
-                                                    <col width={"30%"} />
-                                                    <tbody>
-                                                        <tr>
-                                                            <td colSpan={2}>
-                                                                <h2 className="tw-text-lg tw-font-bold tw-text-ellipsis tw-overflow-hidden tw-whitespace-nowrap">
+                                            <div
+                                                className="tw-w-full tw-border-none tw-p-[0px] tw-m-[0px]"
+                                                key={dataKey}
+                                            >
+                                                <table className="tw-table-fixed tw-w-full tw-text-sm tw-border-none tw-p-[0px] tw-m-[0px]">
+                                                    <col
+                                                        className="tw-border-none tw-p-[0px] tw-m-[0px]"
+                                                        width={"30%"}
+                                                    />
+                                                    <tbody className="tw-border-none tw-p-[0px] tw-m-[0px]">
+                                                        <tr className="tw-border-none tw-p-[0px] tw-m-[0px]">
+                                                            <td className="tw-border-none tw-p-[0]" colSpan={2}>
+                                                                <h2 className="tw-text-lg tw-border-none tw-p-[0px] tw-m-[0px]  tw-font-bold tw-text-ellipsis tw-overflow-hidden tw-whitespace-nowrap">
                                                                     {dataKey}
                                                                 </h2>
                                                             </td>
                                                         </tr>
                                                         {Object.keys(value).map((valueKey, index) => {
                                                             return (
-                                                                <tr key={index}>
-                                                                    <td className="tw-font-bold tw-capitalize">
+                                                                <tr
+                                                                    className="tw-border-none tw-p-[0px] tw-m-[0px]"
+                                                                    key={index}
+                                                                >
+                                                                    <td className="tw-font-bold tw-text-[#000000] tw-text-[12px] tw-border-none tw-p-[0px] tw-m-[0px] tw-capitalize">
                                                                         {valueKey}:
                                                                     </td>
-                                                                    <td className="tw-text-ellipsis tw-overflow-hidden tw-whitespace-nowrap">
+                                                                    <td className="tw-text-ellipsis tw-text-[#000000] tw-text-[12px]  tw-font-normal tw-border-none tw-p-[0px] tw-m-[0px] tw-pl-[20px] tw-overflow-hidden tw-whitespace-nowrap">
                                                                         {value[valueKey]}
                                                                     </td>
                                                                 </tr>
@@ -278,22 +327,33 @@ const DesktopConvert: React.FC<{
                                         );
                                     })}
                                 </div>
+                                <div className="tw-mt-[44px]"></div>
                             </div>
-                            <div className="tw-grow tw-p-8 tw-h-full tw-flex tw-flex-col tw-justify-between">
-                                <div className="tw-flex tw-items-start tw-justify-between">
-                                    {collectingDetails ? <Hash /> : <Tick />}
-                                    {!noReturn && (
-                                        <button className="tw-hidden lg:tw-block" onClick={onHideConvert}>
-                                            <Close />
-                                        </button>
+                            <div className=" tw-px-[48px] tw-pt-[39px]  tw-h-full lg:tw-w-[687px] tw-flex tw-flex-col ">
+                                <div
+                                    className={`tw-flex tw-items-start  ${
+                                        collectingDetails ? "tw-mb-[56px]" : "tw-mb-[17px]"
+                                    }`}
+                                >
+                                    {collectingDetails ? (
+                                        <Hash width="45" height="42.75" />
+                                    ) : (
+                                        <Tick width="46" height="46" />
                                     )}
+
+                                    <button
+                                        className="tw-hidden lg:tw-block tw-absolute tw-top-[24.36px] tw-right-[24.59px]"
+                                        onClick={onHideConvert}
+                                    >
+                                        <Close />
+                                    </button>
                                 </div>
                                 {collectingDetails ? (
                                     <ConversionForm onConvert={handleConvert} forMobile={false} />
                                 ) : (
                                     <>
-                                        <h1 className="tw-text-lg tw-mt-4">
-                                            <b>Thank you!</b>
+                                        <h1 className="tw-text-lg  tw-leading-[22px] tw-font-semibold">
+                                            <b className="tw-font-semibold">Thank you!</b>
                                         </h1>
                                         <ConversionFinalizedPage
                                             forMobile={false}
@@ -323,11 +383,11 @@ const ConversionForm: React.FC<{
     return (
         <>
             <p
-                className="lg:tw-max-w-[85%]"
+                className=""
                 style={{
-                    lineHeight: forMobile ? "19px" : "30px",
-                    fontSize: forMobile ? "14px" : "16px",
-                    margin: forMobile ? "10px 0" : "0 0 17px",
+                    lineHeight: forMobile ? "26px" : "30px",
+                    fontSize: forMobile ? "16px" : "16px",
+                    margin: forMobile ? "0 0 17px" : "0 39px 53.25px  0",
                 }}
             >
                 To fully experience the Spiff workflow, please provide your email and mobile number. We will save and
@@ -336,15 +396,15 @@ const ConversionForm: React.FC<{
             </p>
             <div className="lg:tw-flex tw-justify-between">
                 <div className="lg:tw-flex tw-grow">
-                    <div className="tw-w-full tw-px-3 tw-mb-6 md:tw-mb-0">
+                    <div className="tw-w-full tw-mr-[25px] tw-mb-[20px] md:tw-mb-[20px]">
                         <label
-                            className="tw-block tw-tracking-wide tw-text-[#F23064] tw-text-xs tw-font-bold tw-mb-2"
+                            className="tw-block tw-leading-[16px] tw-tracking-wide tw-text-[#F23064] tw-text-[13px] tw-font-semibold tw-mb-[10px]"
                             htmlFor="email"
                         >
-                            Email*
+                            Email
                         </label>
                         <input
-                            className="tw-appearance-none tw-block tw-w-full tw-bg-white tw-text-[#000000] tw-border tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight tw-outline-none"
+                            className="tw-appearance-none lg:tw-text-[14px] tw-leading-[20px] lg:tw-h-[38px]  lg:tw-w-[206px] lg:tw-min-w-0 tw-w-full  tw-min-w-0  tw-block  tw-text-[20px] tw-bg-white tw-text-[#000000] tw-border tw-rounded tw-py-3 tw-px-4   tw-outline-none"
                             style={{ boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.25)", borderRadius: 6 }}
                             type="email"
                             placeholder="john@doe.com"
@@ -354,15 +414,15 @@ const ConversionForm: React.FC<{
                             required
                         />
                     </div>
-                    <div className="tw-w-full tw-px-3 tw-mb-6 md:tw-mb-0">
+                    <div className="tw-w-full  tw-mr-[16px] tw-mb-[20px] md:tw-mb-[20px]">
                         <label
-                            className="tw-block tw-tracking-wide tw-text-[#F23064] tw-text-xs tw-font-bold tw-mb-2"
+                            className="tw-block tw-leading-[16px]  tw-tracking-wide tw-text-[#F23064] tw-text-[13px]  tw-font-semibold tw-mb-[10px]"
                             htmlFor="mobile"
                         >
                             Mobile
                         </label>
                         <input
-                            className="tw-appearance-none tw-block tw-w-full tw-bg-white tw-text-[#000000] tw-border tw-rounded tw-py-3 tw-pl-4 tw-mb-3 tw-leading-tight tw-outline-none"
+                            className="tw-appearance-none lg:tw-text-[14px] lg:tw-leading-[20px] lg:tw-w-[206px] lg:tw-min-w-0 tw-w-full  lg:tw-h-[38px] tw-text-[20px] tw-block  tw-bg-white tw-text-[#000000] tw-border tw-rounded tw-py-3 tw-pl-4  tw-leading-tight tw-outline-none"
                             style={{
                                 boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.25)",
                                 borderRadius: 6,
@@ -375,10 +435,16 @@ const ConversionForm: React.FC<{
                         />
                     </div>
                 </div>
-                <div className="tw-w-full lg:tw-w-[200px] tw-flex tw-items-center tw-px-3">
+                <div className="tw-w-full lg:tw-w-[200px] tw-flex tw-items-center ">
                     <button
-                        style={{ all: "unset", marginTop: forMobile ? 0 : 10, width: forMobile ? "100%" : undefined }}
-                        className="tw-bg-[#F23064] tw-text-white tw-rounded tw-p-2"
+                        style={{
+                            all: "unset",
+                            marginTop: forMobile ? 0 : 10,
+                            width: forMobile ? "100%" : undefined,
+                            // paddingTop: forMobile ? "20px" : "",
+                            boxShadow: "2px 11px 20px rgba(51, 99, 108, 0.08)",
+                        }}
+                        className="tw-bg-[#F23064] tw-text-center lg:tw-font-medium lg:tw-text-[14px]  lg:tw-w-[140px] tw-text-white tw-leading-[71px] lg:tw-leading-[20px] tw-rounded-[10px] lg:tw-h-[36px] lg:tw-rounded-[6px] "
                         disabled={loading || email === ""}
                         onClick={async () => {
                             setLoading(true);
@@ -403,31 +469,36 @@ const ConversionFinalizedPage: React.FC<{
     return (
         <>
             <div>
-                <p className="tw-my-4 tw-text-slate-500 tw-text-lg tw-leading-relaxed">
-                    You will receive an email with your product PDF shortly.
+                <p className="tw-mt-4 tw-text-[16px] tw-leading-[30px] tw-text-[#000000] ">
+                    You’ll receive an email with your product PDF shortly.
                 </p>
-                <p className="tw-my-4 tw-text-slate-500 tw-text-lg tw-leading-relaxed">
-                    Book a meeting below with a workflow experience expert to learn more about Spiff.
+                <p className="tw-my-[17px] lg:tw-pb-[32px] tw-text-[16px] tw-leading-[30px] tw-text-[#000000]">
+                    Want to talk with an Spiff workflow experience customer support team member? You can easily book a
+                    meeting below.
                 </p>
             </div>
-            <div className="tw-flex tw-mt-auto tw-w-full" style={{ flexDirection: forMobile ? "column" : "row" }}>
+            <div className="tw-flextw-mt-auto tw-w-full" style={{ flexDirection: forMobile ? "column" : "row" }}>
                 <button
-                    style={{ all: "unset", margin: "2px" }}
-                    className="tw-bg-[#F23064] tw-text-white tw-rounded tw-whitespace-nowrap tw-p-2"
+                    style={{ all: "unset", boxShadow: "2px 11px 20px rgba(51, 99, 108, 0.08)" }}
+                    className="tw-bg-[#F23064] lg:tw-font-medium lg:tw-leading-[20px] lg:tw-mb-0 tw-mb-[11px] tw-text-center lg:tw-h-[36px] lg:tw-text-[14px]  lg:tw-rounded-[6px] lg:tw-mr-[11px] tw-w-full  lg:tw-w-[128px]   tw-text-white tw-leading-[71px] tw-rounded-[10px]"
                     onClick={onMeeting}
                 >
                     Book a meeting
                 </button>
                 <button
-                    style={{ all: "unset", margin: "2px" }}
-                    className="tw-bg-[#F23064] tw-text-white tw-rounded tw-whitespace-nowrap p-2"
+                    style={{ all: "unset", boxShadow: "2px 11px 20px rgba(51, 99, 108, 0.08)" }}
+                    className="tw-bg-[#F23064] lg:tw-font-medium lg:tw-leading-[20px] lg:tw-mb-0 tw-mb-[17px] tw-text-center  lg:tw-rounded-[6px] lg:tw-mr-[11px] lg:tw-text-[14px] tw-w-full lg:tw-w-[178px] lg:tw-h-[36px]  tw-text-white tw-leading-[71px] tw-rounded-[10px]"
                     onClick={onLearnMore}
                 >
-                    Learn about more about Spiff
+                    Learn more about Spiff
                 </button>
                 <button
-                    style={{ all: "unset", margin: "2px" }}
-                    className="tw-bg-[#F23064] tw-text-white tw-rounded tw-whitespace-nowrap tw-p-2"
+                    style={{
+                        all: "unset",
+                        // paddingTop: forMobile ? "20px" : "",
+                        boxShadow: "2px 11px 20px rgba(51, 99, 108, 0.08)",
+                    }}
+                    className="tw-bg-[#F23064] lg:tw-font-medium lg:tw-leading-[20px] lg:tw-mb-0 tw-mb-[17px] tw-text-center  lg:tw-rounded-[6px] lg:tw-text-[14px] tw-w-full lg:tw-w-[147px] lg:tw-h-[36px]  tw-text-white tw-leading-[71px] tw-rounded-[10px]"
                     onClick={onWatchUs}
                 >
                     Watch us in action
@@ -449,7 +520,7 @@ export const Convert: React.FC<{
 
     return (
         <div>
-            <div className="tw-hidden lg:tw-block">
+            <div className="tw-hidden   lg:tw-block">
                 <DesktopConvert
                     onConvert={onConvert}
                     onHideConvert={onHideConvert}
@@ -459,7 +530,7 @@ export const Convert: React.FC<{
                     workflowExperience={workflowExperience}
                 />
             </div>
-            <div className="lg:tw-hidden">
+            <div className="lg:tw-hidden   ">
                 <MobileConvert
                     onConvert={onConvert}
                     onHideConvert={onHideConvert}

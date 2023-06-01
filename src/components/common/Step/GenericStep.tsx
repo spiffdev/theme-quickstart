@@ -25,9 +25,15 @@ export const GenericStep: React.FunctionComponent<{
     );
 
     return (
-        <div className="tw-pointer-events-auto tw-w-[80px] lg:tw-w-[225px]">
-            <div className="tw-hidden lg:tw-block">
-                {" "}
+        <div style={{}} className="tw-pointer-events-auto tw-w-[80px] tw-h-full  lg:tw-w-[215px] ">
+            <div
+                style={{
+                    overflowY: "auto",
+                    height: "85%",
+                    overflowX: "hidden",
+                }}
+                className="tw-hidden lg:tw-block tw-pr-[10px] tw-pt-[5px] lg:tw-mt-[15px]   lg:tw-ml-[20px]   tw-scrollbar-thin tw-scrollbar-thumb-slate-500  tw-scrollbar-track-slate-200  "
+            >
                 {/* desktop */}
                 <GridVariantSelector
                     onVariantChanged={onVariantChanged}
@@ -35,8 +41,7 @@ export const GenericStep: React.FunctionComponent<{
                     variants={variants}
                 />
             </div>
-            <div className="lg:tw-hidden">
-                {" "}
+            <div className="lg:tw-hidden ">
                 {/* mobile*/}
                 <VerticalVariantSelector
                     onVariantChanged={onVariantChanged}

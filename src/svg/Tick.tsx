@@ -1,9 +1,12 @@
 import * as React from "react";
-
-export const Tick: React.FC = () => {
+export const Tick: React.FC<{ width?: string; height?: string; filter?: string }> = ({
+    width = "59",
+    height = "59",
+    filter,
+}) => {
     return (
-        <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_d_200_165)">
+        <svg width={width} height={height} viewBox="4 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter={filter}>
                 <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -16,8 +19,6 @@ export const Tick: React.FC = () => {
                     id="filter0_d_200_165"
                     x="0"
                     y="0"
-                    width="54"
-                    height="54"
                     filterUnits="userSpaceOnUse"
                     colorInterpolationFilters="sRGB"
                 >
