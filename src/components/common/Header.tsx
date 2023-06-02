@@ -1,14 +1,16 @@
 import React from "react";
 import Logo from "../../svg/Logo";
 import Nexthash from "../../svg/Nexthash";
-import { AnyStepData, StepHandle } from "@spiffcommerce/core";
+import { AnyStepData, StepHandle, StepType } from "@spiffcommerce/core";
 import { getIconForStepType } from "../../shared";
 
 const DesktopHeader: React.FunctionComponent<{
     currentStep: StepHandle<AnyStepData>;
+    setHeaderHashtag?: any;
+    headerHashtag?: boolean;
     onChangeTab: (step: StepHandle<AnyStepData>) => void;
     steps: StepHandle<AnyStepData>[];
-}> = ({ steps, currentStep, onChangeTab }) => {
+}> = ({ steps, currentStep, onChangeTab, headerHashtag, setHeaderHashtag }) => {
     return (
         <header>
             <div
@@ -21,31 +23,43 @@ const DesktopHeader: React.FunctionComponent<{
             >
                 <div className="tw-flex tw-items-center">
                     <Logo className="" />
-                    <div className="tw-mx-5">
-                        <span className="tw-text-[#F23064] tw-text-lg tw-font-semibold">Workflow</span>{" "}
-                        <span className="tw-text-white tw-text-lg tw-font-semibold">Experience</span>
+                    <div className="tw-mr-5 tw-ml-[29px] tw-leading-[22px]">
+                        <span className="tw-text-[#F23064] tw-leading-[22px] tw-text-lg tw-font-semibold">
+                            Workflow
+                        </span>
+                        <span className="tw-text-white tw-leading-[22px] tw-text-lg tw-font-semibold">Experience</span>
                     </div>
                 </div>
-                <div className="tw-flex tw-text-white tw-gap-6">
+                <div className="tw-flex tw-text-white  tw-gap-6">
                     {steps.map((s) => (
                         <a
                             key={s.getId()}
                             onClick={() => onChangeTab(s)}
-                            className={`tw-h-full tw-cursor-pointer tw-flex tw-items-center tw-justify-center tw-border-b-transparent tw-border-b-4 ${
-                                s.getId() === currentStep.getId()
-                                    ? "!tw-border-b-[#F23064] !tw-opacity-100"
-                                    : "tw-opacity-50"
+                            className={`tw-h-full tw-flex-col   hover:tw-text-white hover:tw-opacity-80 tw-cursor-pointer  tw-flex tw-items-center tw-justify-end tw-pb-[14px]  ${
+                                s.getId() === currentStep.getId() && !headerHashtag
+                                    ? " !w-opacity-100 tw-border-b-[4px] tw-border-b-[#F23064] "
+                                    : "tw-opacity-50  tw-border-b-[4px] tw-border-b-transparent hover:tw-border-b-[#F23064] "
                             }`}
                         >
-                            {getIconForStepType(s.getType(), false)}
-                            <span style={{ fontWeight: 600 }} className="tw-px-2 tw-text-[15px]">
+                            {getIconForStepType(s.getType(), false, "icons")}
+                            <span
+                                style={{ fontWeight: 600 }}
+                                className="tw-px-2 tw-whitespace-nowrap tw-pt-[3px] tw-flex tw-items-start tw-text-start hover:tw-text-white hover:tw-opacity-80 tw-leading-[18px]  tw-text-[15px]"
+                            >
                                 {s.getName()}
                             </span>
                         </a>
                     ))}
-                    <a className={`tw-m-w-[100px] tw-self-center`}>
+                    <button
+                        onClick={() => setHeaderHashtag(!headerHashtag)}
+                        className={`tw-m-w-[100px] tw-self-center tw-h-full  ${
+                            headerHashtag
+                                ? " !w-opacity-100 tw-border-b-[4px] tw-border-b-[#F23064] "
+                                : "tw-opacity-80 hover:tw-opacity-100 tw-border-b-[4px] tw-border-b-transparent hover:tw-border-b-[#F23064]"
+                        }`}
+                    >
                         <Nexthash className="" />
-                    </a>
+                    </button>
                 </div>
             </div>
         </header>
@@ -69,26 +83,34 @@ const MobileHeader: React.FunctionComponent<{
                 }}
             >
                 <div className="tw-flex tw-justify-center" style={{ flex: "1" }}>
-                    <div style={{ marginTop: "17px" }}>
-                        <span className="tw-text-[#F23064] tw-text-lg tw-font-semibold">Workflow</span>{" "}
-                        <span className="tw-text-white tw-text-lg tw-font-semibold">Experience</span>
+                    <div style={{ marginTop: "17px" }} className="tw-leading-[22px]">
+                        <span className="tw-text-[#F23064] tw-leading-[22px] tw-text-lg tw-font-semibold">
+                            Workflow
+                        </span>{" "}
+                        <span className="tw-text-white tw-text-lg tw-leading-[22px]  tw-font-semibold">Experience</span>
                     </div>
                 </div>
-                <div className="tw-flex tw-text-white tw-justify-around" style={{ flex: "1" }}>
+                <div className="tw-flex tw-text-white   tw-justify-around " style={{ flex: "1" }}>
                     {steps.map((s) => (
                         <a
                             key={s.getId()}
                             onClick={() => onChangeTab(s)}
-                            className={`tw-h-full tw-cursor-pointer tw-flex tw-items-center tw-justify-center`}
+                            className={`tw-h-full md:tw-px-[16px] sm:tw-px-[10px] tw-flex tw-justify-center tw-w-full tw-items-center  ssm:tw-px-[8px] sssm:tw-px-[3px] ${
+                                s.getId() === currentStep.getId() ? "" : "tw-opacity-50"
+                            } tw-cursor-pointer   hover:tw-text-white hover:tw-opacity-80   `}
                             style={{
                                 borderBottom:
-                                    s.getId() === currentStep.getId() ? "solid 4px #F23064" : "solid 4px rgba(0,0,0,0)",
-                                padding: "0 16px",
+                                    s.getId() === currentStep.getId()
+                                        ? "solid 4px #F23064"
+                                        : "solid 4px rgba(0,0,0,0) ",
+                                // padding: "0 16px",
                                 width: "100%",
                             }}
                         >
-                            {getIconForStepType(s.getType(), false)}
-                            <span className="tw-px-2 tw-text-[15px]">{s.getName()}</span>
+                            {getIconForStepType(s.getType(), false, "icons")}
+                            <span className="tw-px-2 ssm:tw-px-[4px] tw-text-start sssm:tw-text-[13px] hover:tw-text-white hover:tw-opacity-80   sm:tw-text-[15px] tw-text-[15px] tw-font-semibold tw-leading-[18px]">
+                                {s.getName()}
+                            </span>
                         </a>
                     ))}
                 </div>
@@ -98,15 +120,23 @@ const MobileHeader: React.FunctionComponent<{
 };
 
 export const Header: React.FunctionComponent<{
+    setHeaderHashtag?: any;
+    headerHashtag?: boolean;
     conversionScreenActive: boolean;
     currentStep: StepHandle<AnyStepData>;
     onChangeTab: (step: StepHandle<AnyStepData>) => void;
     steps: StepHandle<AnyStepData>[];
-}> = ({ steps, currentStep, onChangeTab, conversionScreenActive }) => {
+}> = ({ steps, currentStep, onChangeTab, conversionScreenActive, setHeaderHashtag, headerHashtag }) => {
     return (
         <div>
             <div className="tw-hidden lg:tw-block">
-                <DesktopHeader currentStep={currentStep} onChangeTab={onChangeTab} steps={steps} />
+                <DesktopHeader
+                    setHeaderHashtag={setHeaderHashtag}
+                    headerHashtag={headerHashtag}
+                    currentStep={currentStep}
+                    onChangeTab={onChangeTab}
+                    steps={steps}
+                />
             </div>
             <div className="lg:tw-hidden">
                 <MobileHeader

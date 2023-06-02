@@ -31,19 +31,19 @@ const DesktopTextStep: React.FunctionComponent<{
     } = props;
 
     return (
-        <div className="tw-pointer-events-auto tw-w-[225px]">
+        <div className="tw-pointer-events-auto tw-mt-[20px]  tw-ml-[20px]  ">
             <div>
-                <h1 className="tw-mb-2 tw-text-white tw-text-[15px] tw-leading-[18px]">Add Text</h1>
+                <h1 className="tw-mb-[10px]  tw-text-white tw-text-[15px] tw-ml-0 tw-leading-[18px]">Add text</h1>
                 <textarea
                     ref={textRef}
-                    className="tw-h-[89px] tw-bg-[#FFFFFF] tw-border tw-rounded tw-px-4 focus:tw-outline-none"
+                    className=" tw-bg-[#FFFFFF] tw-leading-[20px] lg:tw-w-[206px]  tw-border  tw-px-[13px] focus:tw-outline-none"
                     style={{
                         borderRadius: "6px",
                         height: "60px",
                         marginBottom: 0,
                         padding: "9px 1rem",
                         resize: "none",
-                        width: "100%",
+                        boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.25)",
                     }}
                     id="grid-first-name"
                     onChange={onType}
@@ -51,17 +51,26 @@ const DesktopTextStep: React.FunctionComponent<{
                     value={inputText}
                 />
                 {remainingCharacters !== undefined && (
-                    <h4 className="tw-mb-2 tw-text-white tw-text-[10px]">{remainingCharacters} characters remaining</h4>
+                    <h4 className="tw-mb-[10px] tw-font-bold tw-leading-[20px]  tw-text-white tw-text-[10px]">
+                        {remainingCharacters} characters remaining
+                    </h4>
                 )}
             </div>
-            <h1 className="tw-mb-2 tw-text-white tw-text-[15px] tw-leading-[18px]">Font</h1>
-            <GridVariantSelector
-                onVariantChanged={onVariantChanged}
-                selectedVariantId={currentVariant?.getId()}
-                variants={variants}
-            />
-            <div className="tw-mt-2">
-                <h1 className="tw-mb-2 tw-text-white tw-text-[15px] tw-leading-[18px]">Color</h1>
+            <h1 className="tw-mb-[10px] tw-text-white tw-text-[15px] tw-ml-0 tw-leading-[18px] tw-font-semibold">
+                Font
+            </h1>
+            <div className="tw-w-auto tw-flex ">
+                <GridVariantSelector
+                    checkFont={false}
+                    onVariantChanged={onVariantChanged}
+                    selectedVariantId={currentVariant?.getId()}
+                    variants={variants}
+                />
+            </div>
+            <div className="tw-mt-[10px]">
+                <h1 className="tw-mb-[10px] tw-text-white tw-text-[15px] tw-ml-0 tw-leading-[18px] tw-font-semibold">
+                    Color
+                </h1>
                 <ColorGallery columnCount={5} onColorSelected={selectColor} colors={colors} selectedFill={fill} />
             </div>
         </div>
@@ -96,19 +105,23 @@ const MobileTextStep: React.FC<{
     } = props;
 
     return (
-        <div className="tw-pointer-events-auto" style={{ width: "100%" }}>
-            <div className="tw-mt-4">
-                <h1 className="tw-text-white tw-text-[15px] tw-leading-[18px]" style={{ margin: "10px 0" }}>
-                    Add Text
+        <div className="tw-pointer-events-auto " style={{ width: "100%" }}>
+            <div className="tw-mt-4 tw-pr-[14px] lg:tw-pr-[0px] ">
+                <h1
+                    className="tw-text-white tw-font-semibold  tw-text-[15px] tw-leading-[18px]"
+                    style={{ margin: "10px 0" }}
+                >
+                    Add text
                 </h1>
                 <textarea
                     ref={textRef}
-                    className="tw-h-[89px] tw-bg-[#FFFFFF] tw-border tw-rounded tw-py-3 tw-px-4 tw-mb-3 focus:tw-outline-none"
+                    className="tw-h-[43px] tw-items-start  tw-text-[16px] tw-text-black tw-leading-[20px] tw-font-normal tw-bg-[#FFFFFF] tw-border tw-rounded   focus:tw-outline-none"
                     style={{
+                        boxShadow: "0px 1px 7px rgba(0, 0, 0, 0.25)",
                         borderRadius: "6px",
                         height: "43px",
                         marginBottom: 0,
-                        padding: "9px 1rem",
+                        padding: "9px 13px",
                         resize: "none",
                         width: "100%",
                         overflowY: "hidden",
@@ -124,16 +137,19 @@ const MobileTextStep: React.FC<{
                     </h4>
                 )}
             </div>
-            <h1 className="tw-text-white tw-text-[15px] tw-leading-[18px]" style={{ margin: "10px 0" }}>
-                Font
-            </h1>
-            <HorizontalVariantSelector
-                onVariantChanged={onVariantChanged}
-                selectedVariantId={currentVariant?.getId()}
-                variants={variants}
-            />
-            <div className="tw-mt-4">
-                <h1 className="tw-text-white tw-text-[15px] tw-leading-[18px]" style={{ margin: "10px 0" }}>
+            <div className="tw-pr-[14px] lg:tw-pr-[0px]">
+                <h1 className="tw-text-white tw-text-[15px] tw-leading-[18px]" style={{ marginBottom: "10px" }}>
+                    Font
+                </h1>
+                <HorizontalVariantSelector
+                    checkFont={false}
+                    onVariantChanged={onVariantChanged}
+                    selectedVariantId={currentVariant?.getId()}
+                    variants={variants}
+                />
+            </div>
+            <div className="tw-mt-4 tw-pr-[14px] lg:tw-pr-[0px]">
+                <h1 className="tw-text-white tw-text-[15px] tw-leading-[18px]" style={{ marginBottom: "10px" }}>
                     Color
                 </h1>
                 <ColorGallery columnCount={8} onColorSelected={selectColor} colors={colors} selectedFill={fill} />
@@ -249,8 +265,8 @@ export const TextStep: React.FC<{
                 />
             </div>
             <div
-                className="lg:tw-hidden"
-                style={{ paddingRight: "32px", width: "100%", position: "fixed", bottom: 130 }}
+                className="lg:tw-hidden "
+                style={{ paddingRight: "32px", width: "100%", position: "absolute", bottom: "36px" }}
             >
                 <MobileTextStep
                     colors={colors}

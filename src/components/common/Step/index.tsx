@@ -18,7 +18,7 @@ export const Step: React.FC<{
 }> = (props) => {
     return (
         <div>
-            <div className="tw-hidden lg:tw-block" style={{ position: "absolute", top: 20, left: 20 }}>
+            <div className="tw-hidden lg:tw-block tw-h-full" style={{ position: "absolute", top: 20, left: 20 }}>
                 <InnerStep // desktop
                     step={props.step}
                 />
@@ -30,6 +30,7 @@ export const Step: React.FC<{
                     top: 15,
                     left: 15,
                     width: "100%",
+                    height: "100%",
                     paddingRight: "32px",
                     pointerEvents: "none",
                 }}
