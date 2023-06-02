@@ -18,10 +18,17 @@
 @media (1024px <= width) {
     .App {
         height: 90vh;
+        max-height: 950px;
     }
 }
 @media (1024px > width) {
     .App {
         height: 100vh;
+    }
+}
+
+@media (959px >= width >= 769px) {
+    .App {
+        max-height: 750px;
     }
 }

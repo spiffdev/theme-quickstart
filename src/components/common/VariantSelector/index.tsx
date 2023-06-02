@@ -13,7 +13,7 @@ export const GridVariantSelector: React.FC<{
 
     return (
         <div>
-            <div className={`tw-grid ${checkFont ? "tw-grid-cols-2 " : "tw-grid-cols-3  "} tw-gap-[10px] `}>
+            <div className={`tw-grid ${checkFont ? "tw-grid-cols-2 " : "tw-grid-cols-3  "} tw-gap-[10px]  `}>
                 {variants.map((v) => {
                     const selected = selectedVariantId == v.getId();
                     return (
@@ -45,7 +45,7 @@ export const HorizontalVariantSelector: React.FC<{
                 {variants.map((v) => {
                     const selected = selectedVariantId == v.getId();
                     return (
-                        <div className="lg:tw-mr-0 tw-mr-[14px]">
+                        <div className="lg:tw-mr-0 tw-mr-[14px] ssm:tw-mr-[14px] sssm:tw-mr-[10px]">
                             <VariantButton
                                 checkFont={checkFont}
                                 key={v.getId()}
@@ -78,7 +78,7 @@ export const VerticalVariantSelector: React.FC<{
     const [hieght, setHieght] = useState(window.innerHeight);
     const [width, setWidth] = useState(window.innerWidth);
 
-    const maxSlots = screen.height < 700 ? 3 : 4;
+    const maxSlots = screen.height < 750 ? 3 : screen.height < 500 ? 2 : 4;
     useEffect(() => {
         function handlerH() {
             setHieght(window.innerHeight);

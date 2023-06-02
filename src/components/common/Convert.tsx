@@ -126,7 +126,7 @@ const MobileConvert: React.FC<{
                                                                 <td className="tw-border-none tw-p-[0px] tw-m-[0px] tw-text-[14px] tw-leading-[19px]  tw-font-bold tw-capitalize tw-px-0 tw-py-0 ">
                                                                     {valueKey}:
                                                                 </td>
-                                                                <td className="tw-text-ellipsis tw-border-none tw-text-[#000000] tw-text-[14px]  tw-font-normal tw-p-[0px] tw-m-[0px]  tw-leading-[19px] tw-overflow-hidden tw-whitespace-nowrap">
+                                                                <td className="tw-text-ellipsis tw-border-none tw-text-[#000000] tw-text-[14px] sssm:tw-pl-[20px]  tw-font-normal tw-p-[0px] tw-m-[0px]  tw-leading-[19px] tw-overflow-hidden tw-whitespace-nowrap">
                                                                     {value[valueKey]}
                                                                 </td>
                                                             </tr>
@@ -242,7 +242,7 @@ const DesktopConvert: React.FC<{
 
     return (
         <div
-            className="tw-absolute tw-left-0  tw-w-full tw-h-full  tw-flex tw-justify-center tw-items-center tw-top-0 tw-z-10 "
+            className="tw-absolute tw-left-0 tw-p-[20px] tw-w-full tw-h-full  tw-flex tw-justify-center tw-items-center tw-top-0 tw-z-10 "
             aria-labelledby="modal-title"
             role="dialog"
             aria-modal="true"
@@ -250,14 +250,14 @@ const DesktopConvert: React.FC<{
             <div className=" tw-inset-0 tw-z-10 tw-overflow-y-auto">
                 <div className="tw-flex tw-min-h-full tw-w-full tw-items-end tw-justify-center tw-p-4 tw-text-center sm:tw-items-center sm:tw-p-0">
                     <div
-                        className="tw-relative tw-transform  tw-overflow-hidden tw-bg-white tw-text-left tw-shadow-xl tw-transition-all sm:tw-my-8 sm:tw-w-full lg:min-tw-w-0  lg:tw-w-[1000px]  lg:tw-h-[418px]"
+                        className="tw-relative tw-transform  tw-overflow-hidden tw-bg-white tw-text-left tw-shadow-xl tw-transition-all sm:tw-my-8 sm:tw-w-full lg:min-tw-w-0  lg:tw-min-w-[900px]  lg:tw-w-[1000px]  lg:tw-h-[418px]"
                         style={{ borderRadius: 20 }}
                     >
-                        <div className="tw-flex lg:tw-relative tw-h-full tw-absolute tw-left-0 tw-w-full tw-h-full  tw-flex tw-justify-center tw-items-center tw-top-0 tw-z-10 ">
+                        <div className="tw-flex lg:tw-relative tw-h-full lg:tw-w-[1000px]">
                             <div className=" tw-bg-[#F5F5F5]  tw-flex tw-flex-col tw-w-full lg:tw-w-[312px]">
                                 {!noReturn && (
                                     <button
-                                        className="tw-p-1  tw-bg-transparent tw-border-0 tw-text-black tw-bg-black tw-float-right tw-text-xl tw-leading-none tw-font-semibold tw-outline-none focus:tw-outline-none tw-mt-2 tw-mr-2  tw-block lg:tw-hidden"
+                                        className="tw-p-1  tw-bg-transparent  lg:tw-right-[64.59px] xl:tw-top-[24.36px] xl:tw-right-[24.59px] tw-border-0 tw-text-black tw-bg-black tw-float-right tw-text-xl tw-leading-none tw-font-semibold tw-outline-none focus:tw-outline-none tw-mt-2 tw-mr-2  tw-block lg:tw-hidden"
                                         onClick={onHideConvert}
                                     >
                                         X
@@ -283,7 +283,7 @@ const DesktopConvert: React.FC<{
                                         </div>
                                     )}
                                 </div>
-                                <div className=" tw-pr-[57px]  tw-pl-[47px] tw-overflow-auto  tw-scrollbar-thin tw-scrollbar-thumb-slate-500  tw-scrollbar-track-slate-200   tw-border-spacing-2 tw-w-full  tw-shrink-[2] tw-flex tw-flex-col tw-gap-2">
+                                <div className=" tw-pr-[57px] tw-h-[104px]  tw-pl-[47px] tw-overflow-auto  tw-scrollbar-thin tw-scrollbar-thumb-slate-500  tw-scrollbar-track-slate-200   tw-border-spacing-2 tw-w-full  tw-shrink-[2] tw-flex tw-flex-col tw-gap-2">
                                     {Array.from(exportedData).map(([dataKey, value]) => {
                                         if (!value) {
                                             return undefined;
@@ -329,7 +329,7 @@ const DesktopConvert: React.FC<{
                                 </div>
                                 <div className="tw-mt-[44px]"></div>
                             </div>
-                            <div className=" tw-px-[48px] lg:tw-px-[28px] xl:tw-px-[48px] tw-pt-[39px]  tw-h-full lg:tw-w-[687px] tw-flex tw-flex-col  ">
+                            <div className=" tw-px-[48px] lg:tw-px-[28px] xl:tw-px-[48px] tw-pt-[39px]  tw-h-full lg:tw-w-[687px] tw-flex tw-flex-col ">
                                 <div
                                     className={`tw-flex tw-items-start  ${
                                         collectingDetails ? "tw-mb-[56px]" : "tw-mb-[17px]"
@@ -342,7 +342,7 @@ const DesktopConvert: React.FC<{
                                     )}
 
                                     <button
-                                        className="tw-hidden lg:tw-block tw-absolute tw-top-[24.36px] tw-right-[24.59px]"
+                                        className="tw-hidden lg:tw-block tw-absolute  lg:tw-right-[64.59px] xl:tw-top-[24.36px] xl:tw-right-[24.59px]"
                                         onClick={onHideConvert}
                                     >
                                         <Close />
@@ -383,10 +383,11 @@ const ConversionForm: React.FC<{
     return (
         <>
             <p
-                 className={`${forMobile ? "tw-mb-[17px]" : "xl:tw-mr[39px] lg:tw-mb-[13.25px] xl:tw-mb-[53.25px] "}`}
+                className={`${forMobile ? "tw-mb-[17px]" : "xl:tw-mr[39px] lg:tw-mb-[13.25px] xl:tw-mb-[53.25px] "}`}
                 style={{
                     lineHeight: forMobile ? "26px" : "30px",
                     fontSize: forMobile ? "16px" : "16px",
+                    margin: forMobile ? "0 0 17px" : "0 39px 53.25px  0",
                 }}
             >
                 To fully experience the Spiff workflow, please provide your email and mobile number. We will save and

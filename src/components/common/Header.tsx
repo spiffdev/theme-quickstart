@@ -44,7 +44,7 @@ const DesktopHeader: React.FunctionComponent<{
                             {getIconForStepType(s.getType(), false, "icons")}
                             <span
                                 style={{ fontWeight: 600 }}
-                                className="tw-px-2 tw-whitespace-nowrap tw-pt-[3px]  hover:tw-text-white hover:tw-opacity-80 tw-leading-[18px]  tw-text-[15px]"
+                                className="tw-px-2 tw-whitespace-nowrap tw-pt-[3px] tw-flex tw-items-start tw-text-start hover:tw-text-white hover:tw-opacity-80 tw-leading-[18px]  tw-text-[15px]"
                             >
                                 {s.getName()}
                             </span>
@@ -95,9 +95,9 @@ const MobileHeader: React.FunctionComponent<{
                         <a
                             key={s.getId()}
                             onClick={() => onChangeTab(s)}
-                            className={`tw-h-full tw-px-[16px] ssm:tw-px-[8px] sssm:tw-px-[3px] ${
+                            className={`tw-h-full md:tw-px-[16px] sm:tw-px-[10px] tw-flex tw-justify-center tw-w-full tw-items-center  ssm:tw-px-[8px] sssm:tw-px-[3px] ${
                                 s.getId() === currentStep.getId() ? "" : "tw-opacity-50"
-                            } tw-cursor-pointer tw-flex tw-items-center  hover:tw-text-white hover:tw-opacity-80  tw-justify-center `}
+                            } tw-cursor-pointer   hover:tw-text-white hover:tw-opacity-80   `}
                             style={{
                                 borderBottom:
                                     s.getId() === currentStep.getId()
@@ -108,7 +108,7 @@ const MobileHeader: React.FunctionComponent<{
                             }}
                         >
                             {getIconForStepType(s.getType(), false, "icons")}
-                            <span className="tw-px-2 ssm:tw-px-[4px] hover:tw-text-white hover:tw-opacity-80   tw-text-[15px] tw-font-semibold tw-leading-[18px]">
+                            <span className="tw-px-2 ssm:tw-px-[4px] tw-text-start sssm:tw-text-[13px] hover:tw-text-white hover:tw-opacity-80   sm:tw-text-[15px] tw-text-[15px] tw-font-semibold tw-leading-[18px]">
                                 {s.getName()}
                             </span>
                         </a>

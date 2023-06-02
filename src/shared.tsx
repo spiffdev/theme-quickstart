@@ -19,7 +19,7 @@ export const getIconForStepType = (
             return "tw-w-[38.73px]  tw-h-[44.69px] tw-shrink-0";
         }
         if (size === "icons") {
-            return "tw-w-[23.94px] tw-h-[27.62px] tw-shrink-0";
+            return "tw-w-[23.94px]  ssm:tw-h-[27.62px] ssm:tw-w-[23.94px] sssm:tw-w-[18.94px] sssm:tw-h-[18.94pxpx] tw-h-[27.62px] tw-shrink-0";
         }
         return "tw-w-[55px] tw-h-[55px] tw-shrink-0";
     };
@@ -28,7 +28,7 @@ export const getIconForStepType = (
             return "tw-w-[55px]  tw-h-[55px] tw-shrink-0";
         }
         if (size === "icons") {
-            return "tw-w-[30px] tw-h-[30px] tw-shrink-0";
+            return "tw-w-[30px] ssm:tw-h-[30px] ssm:tw-w-[30px] sssm:tw-w-[25px] sssm:tw-h-[25px] tw-h-[30px] tw-shrink-0";
         }
         return "tw-w-[55px] tw-h-[55px] tw-shrink-0";
     };
@@ -37,7 +37,7 @@ export const getIconForStepType = (
             return "tw-w-[36.67px]  tw-h-[36.67px] tw-shrink-0";
         }
         if (size === "icons") {
-            return "tw-w-[22.67px] tw-h-[22.67px] tw-shrink-0";
+            return "tw-w-[22.67px] ssm:tw-h-[22.67px] ssm:tw-w-[22.67px] sssm:tw-w-[17.67px] sssm:tw-h-[17.67px] tw-h-[22.67px] tw-shrink-0";
         }
         return "tw-w-[55px] tw-h-[55px] tw-shrink-0";
     };

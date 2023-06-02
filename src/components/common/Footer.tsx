@@ -21,7 +21,7 @@ const DesktopFooter: React.FunctionComponent<{
                         </p>
                         <h1
                             style={{ all: "unset" }}
-                            className="tw-ml-[18px] xl:tw-max-w-[350px] xl:tw-w-[270px] lg:tw-ml-[10px]  tw-leading-[22px] tw-text-[18px] tw-text-black tw-font-[600]"
+                            className="xl:tw-ml-[18px] xl:tw-max-w-[350px] xl:tw-w-[270px] lg:tw-ml-[10px]  tw-leading-[22px] tw-text-[18px] tw-text-black tw-font-[600]"
                         >
                             {currentStep?.getName()}
                         </h1>
@@ -68,27 +68,29 @@ const MobileFooter: React.FunctionComponent<{
     return (
         <div className="tw-bg-[#FFF] tw-h-[93px]   tw-w-full tw-flex tw-relative  tw-bottom-0 tw-justify-between">
             <div
-                className={`tw-flex tw-items-center   ${
+                className={`tw-flex tw-items-center tw-justify-center sssm:tw-mb-0   ${
                     currentStep?.getType() === StepType.Text
-                        ? "tw-px-[13px] sssm:tw-px-[5px]"
+                        ? "tw-px-[13px] sm:tw-px-[13px] sssm:tw-px-[5px]"
                         : ` ${
                               currentStep?.getType() === StepType.Picture
-                                  ? "tw-px-[22px] sssm:tw-px-[12px]"
-                                  : "tw-px-[20px] sssm:tw-px-[10px] "
+                                  ? "tw-px-[22px] md:tw-px-[22px] sm:tw-px-[22px] sssm:tw-px-[10px]"
+                                  : "tw-px-[20px] md:tw-px-[20px] sm:tw-px-[20px] sssm:tw-px-[8px] "
                           }`
                 }`}
             >
                 <div className="">{icon}</div>
                 <h1
                     className={` ${
-                        currentStep?.getType() === StepType.Text ? "tw-ml-[10px] sssm:tw-px-[5px]" : "tw-ml-[18px] sssm:tw-px-[8px]"
-                    } tw-leading-[19.36px] tw-text-[16px] tw-font-[600]`}
+                        currentStep?.getType() === StepType.Text
+                            ? "tw-ml-[10px]  md:tw-ml-[10px] sm:tw-ml-[10px] tw-mb-0 sssm:tw-ml-[5px]"
+                            : "tw-ml-[18px] md:tw-ml-[18px] sm:tw-ml-[18px] tw-mb-0  sssm:tw-ml-[8px]"
+                    } tw-leading-[19.36px] tw-mb-0 tw-text-[16px]  tw-font-[600]`}
                 >
                     {currentStep?.getName()}
                 </h1>
             </div>
             <div
-                className="tw-flex tw-justify-center tw-px-[14px] sssm:tw-px-[7px]"
+                className="tw-flex tw-justify-center tw-px-[14px] sm:tw-px-[14px] sssm:tw-px-[7px]"
                 style={{ flexDirection: "column" }}
             >
                 <button
