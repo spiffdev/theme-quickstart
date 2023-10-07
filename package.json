@@ -43,7 +43,7 @@
         "mangle-css-class-webpack-plugin": "^5.0.9",
         "mini-css-extract-plugin": "2.6.1",
         "node-polyfill-webpack-plugin": "2.0.1",
-        "postcss": "8.4.21",
+        "postcss": "8.4.31",
         "postcss-cli": "10.1.0",
         "postcss-loader": "7.2.4",
         "postcss-preset-env": "8.3.0",
